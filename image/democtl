@@ -1,0 +1,15 @@
+#!/bin/bash
+cd /opt/runc-demo/oci
+
+case $1 in
+start)
+  demo-runc run -d runcdemo
+;;
+stop)
+  demo-runc stop runcdemo
+;;
+restart)
+  demo-runc stop runcdemo
+  demo-runc run -d runcdemo
+;;
+esac

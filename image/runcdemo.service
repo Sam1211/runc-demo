@@ -1,0 +1,22 @@
+[Unit]                                                                                                           
+Description=runc demo                                                                                            
+Wants=multi-user.target                                                                                          
+After=multi-user.target                                                                                          
+                                                                                                                   
+[Service]                                                                                                        
+                                                                                                                   
+Type=oneshot                                                                                                     
+StandardInput=null                                                                                               
+StandardOutput=journal+console                                                                                   
+                                                                                                                   
+RemainAfterExit=yes                                                                                              
+                                                                                                                   
+ExecStart=/usr/bin/democtl run                                                               
+                                                                                                                   
+TimeoutStopSec=482                                                                                               
+ExecStop=/usr/bin/democtl stop                                                                    
+                                                                                                                   
+ExecReload=/usr/bin/democtl restart                                                               
+                                                                                                                   
+[Install]                                                                                                        
+WantedBy=multi-user.target            
