@@ -11,12 +11,12 @@ StandardOutput=journal+console
                                                                                                                    
 RemainAfterExit=yes                                                                                              
                                                                                                                    
-ExecStart=/usr/bin/democtl run                                                               
+ExecStart=/opt/runc-demo/democtl run                                                               
                                                                                                                    
 TimeoutStopSec=482                                                                                               
-ExecStop=/usr/bin/democtl stop                                                                    
+ExecStop=/opt/runc-demo/democtl stop                                                                    
                                                                                                                    
-ExecReload=/usr/bin/democtl restart                                                               
+ExecReload=/opt/runc-demo/democtl restart                                                               
                                                                                                                    
 [Install]                                                                                                        
 WantedBy=multi-user.target            

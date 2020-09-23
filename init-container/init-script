@@ -1,7 +1,9 @@
 #!/bin/bash
-echo "here goes nothing...."
 mkdir -p /opt/runc-demo/oci
 cp -R /image/oci/* /opt/runc-demo/oci/
-cp -R /image/democtl /usr/bin/
-cp -R /image/runcdemo.service /etc/systemd/system/
-systemctl enable runcdemo.service && systemctl start runcdemo.service
+cp  /image/democtl /opt/runc-demo/
+cp  /image/runcdemo.service /etc/systemd/system/
+
+/usr/bin/nsenter -m/proc/1/ns/mnt -- chmod u+x /opt/runc-demo/democtl
+/usr/bin/nsenter -m/proc/1/ns/mnt systemctl enable runcdemo.service -i
+/usr/bin/nsenter -m/proc/1/ns/mnt systemctl start runcdemo.service -i

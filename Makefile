@@ -6,4 +6,4 @@ image:  ##  Builds a container image of the runc-demo init container
 	docker build -t runc-demo-init:latest -f init-container/Dockerfile .
 .PHONY: run 
 run:  ##  Launches the init contianer on your local system
-	docker run -v /var/run/docker.sock:/var/run/docker.sock -v /run/containerd:/run/containerd -v /var/run/crio:/var/run/crio -v /dev:/dev -v /proc:/proc -v /usr/bin:/usr/bin -v /etc/systemd/system:/etc/systemd/system -v /opt:/opt runc-demo-init
+	docker run -d --rm --privileged --net=host --pid=host --ipc=host -v /etc/systemd/system:/etc/systemd/system -v /opt:/opt  runc-demo-init

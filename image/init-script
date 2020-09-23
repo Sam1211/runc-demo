@@ -1,7 +1,0 @@
-#!/bin/bash
-echo "here goes nothing...."
-mkdir -p /opt/runc-demo/oci
-cp -R /image/oci/* /opt/runc-demo/oci/
-cp -R /image/democtl /usr/bin/
-cp -R /image/runcdemo.service /etc/systemd/system/
-systemctl enable runcdemo.service && systemctl start runcdemo.service
