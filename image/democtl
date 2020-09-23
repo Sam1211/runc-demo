@@ -3,13 +3,16 @@ cd /opt/runc-demo/oci
 
 case $1 in
 start)
-  demo-runc run -d runcdemo
+  /opt/runc-demo/oci/demo-runc run -d demo
 ;;
 stop)
-  demo-runc stop runcdemo
+  /opt/runc-demo/oci/demo-runc kill demo KILL
+  sleep 2
+  /opt/runc-demo/oci/demo-runc delete demo
 ;;
 restart)
-  demo-runc stop runcdemo
-  demo-runc run -d runcdemo
+  /opt/runc-demo/oci/demo-runc kill demo KILL
+  /opt/runc-demo/oci/demo-runc delete demo
+  /opt/runc-demo/oci/demo-runc run -d demo
 ;;
 esac
