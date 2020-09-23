@@ -5,15 +5,14 @@ After=multi-user.target
                                                                                                                    
 [Service]                                                                                                        
                                                                                                                    
-Type=oneshot                                                                                                     
+Type=simple
 StandardInput=null                                                                                               
 StandardOutput=journal+console                                                                                   
                                                                                                                    
 RemainAfterExit=yes                                                                                              
                                                                                                                    
-ExecStart=/opt/runc-demo/democtl run                                                               
+ExecStart=/opt/runc-demo/democtl start
                                                                                                                    
-TimeoutStopSec=482                                                                                               
 ExecStop=/opt/runc-demo/democtl stop                                                                    
                                                                                                                    
 ExecReload=/opt/runc-demo/democtl restart                                                               
