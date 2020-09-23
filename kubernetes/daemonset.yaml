@@ -14,6 +14,9 @@ spec:
       labels:
         name: runc-demo
     spec:
+      hostPID: true
+      hostIPC: true
+      restartPolicy: Always
       containers:
       - name: runc-demo
         image: jgriffith/runc-demo
@@ -23,28 +26,15 @@ spec:
           requests:
             cpu: 100m
             memory: 200Mi
+        securityContext:
+          privileged: true
         volumeMounts:
-        - name: dev
-          mountPath: /dev
-        - name: proc
-          mountPath: /proc
-        - name: bin
-          mountPath: /usr/bin
         - name: opt
           mountPath: /opt
         - name: systemd
           mountPath: /etc/systemd/system
       terminationGracePeriodSeconds: 30
       volumes:
-      - name: dev
-        hostPath:
-          path: /dev
-      - name: proc
-        hostPath:
-          path: /proc
-      - name: bin
-        hostPath:
-          path: /usr/bin
       - name: opt
         hostPath:
           path: /opt
