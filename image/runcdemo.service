@@ -4,18 +4,17 @@ Wants=multi-user.target
 After=multi-user.target                                                                                          
                                                                                                                    
 [Service]                                                                                                        
-                                                                                                                   
 Type=simple
-StandardInput=null                                                                                               
-StandardOutput=journal+console                                                                                   
-                                                                                                                   
-RemainAfterExit=yes                                                                                              
-                                                                                                                   
+User=root
+WorkingDirectory=/opt/runc-demo
 ExecStart=/opt/runc-demo/democtl start
-                                                                                                                   
 ExecStop=/opt/runc-demo/democtl stop                                                                    
-                                                                                                                   
-ExecReload=/opt/runc-demo/democtl restart                                                               
-                                                                                                                   
+Restart=always
+StandardOutput=null
+StandardError=null
+KillMode=mixed
+TimeoutStopSec=20
+LogRateLimitBurst=0
+
 [Install]                                                                                                        
 WantedBy=multi-user.target            
