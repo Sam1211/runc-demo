@@ -6,9 +6,9 @@ After=multi-user.target
 [Service]                                                                                                        
 Type=simple
 User=root
-WorkingDirectory=/opt/runc-demo
-ExecStart=/opt/runc-demo/democtl start
-ExecStop=/opt/runc-demo/democtl stop                                                                    
+WorkingDirectory=/opt/runc-demo/oci
+ExecStart=/bin/sh -c "/opt/runc-demo/oci/demo-runc run -d runcdemo"
+ExecStop=/bin/sh -c "/opt/runc-demo/oci/demo-runc kill runcdemo KILL && sleep 2 && /opt/runc-demo/oci/demo-runc delete runcdemo"
 Restart=always
 StandardOutput=null
 StandardError=null
